@@ -4,25 +4,24 @@ body {
 }
 
 table {
-	margin: 80px auto;
-	background-color: blue;
+	margin: 40px auto;
 	border-collapse: collapse;
 }
 
-caption {
-	font-weight: bold;
-	font-size: 1.5em;
+tr {
+	margin: 0px;
+    padding: 0px;
 }
 
 td {
 	background-color: white;
 	margin: 0px;
     padding: 0px;
-}
-
-tr {
-	margin: 0px;
-    padding: 0px;
+    width: 125px;
+    height: 125px;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 3em;
 }
 
 .playerAlert {
@@ -34,13 +33,10 @@ tr {
 	font-size: 3em;
 }
 
-button {
-    width: 200px;
-    height: 200px;
-    background: #fff;
-    cursor: pointer;
-    margin: 0px;
-    border: 3px solid blue;
-    font-weight: bold;
-    font-size: 1.5em;
+.exes {
+	color: blue;
+}
+
+.oohs {
+	color: green;
 }
