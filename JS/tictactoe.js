@@ -1,8 +1,3 @@
-$(document).ready(function() {
-    alert("X or O");
-});
-
-
 var $tdSelect = $('td');
 
 
