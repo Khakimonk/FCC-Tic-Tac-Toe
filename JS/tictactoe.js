@@ -1,36 +1,3 @@
-var $tdSelect = $('td');
-var $modal = $('#playerSelect');
-
-$(document).ready(function () {
-    $modal.css('display', 'block');
-});
-
-var playerIcon;
-
-$('#exes').click(function() {
-    playerIcon = 'X';
-    $modal.css('display', 'none');
-});
-
-$('#oohs').click(function() {
-    playerIcon = 'O';
-    $modal.css('display', 'none');
-});
-
-$tdSelect.click(function() {
-    var board = $(this);
-    checkBoard(board, playerIcon);
-});
-
-function checkBoard(board, player) {
-    if(board.text() != "") {
-        console.log("Square already selected");
-    } 
-    else {
-        board.text(player);
-    }
-}
-
 var State = function(old) {
     this.turn = "";
     this.oMovesCount = 0;
@@ -290,4 +257,53 @@ function takeAMasterMove(turn) {
 
     game.advanceTo(next);
 }
+function takeANoviceMove(turn) {
+	var available = game.currentState.emptyCells();
 
+	var availableActions.available.map(function(pos) {
+		var action = new AIAction(pos);
+
+		var nextState = action.applyTo(game.currentState);
+
+		action.minimaxVal = minimaxValue(nextState);
+
+		return action;
+	});
+
+	if(turn === "X")
+		availableActions.sort(AIAction.DESCENDING);
+	else
+		availableActions.sort(AIAction.ASCENDING);
+
+	var chosenAction;
+
+	if(Math.random()*100 <= 40) {
+		chosenAction = availableActions[0];
+	}
+	else {
+		if(availableActions.length >= 2) {
+			chosenAction = availableActions[1];
+		}
+		else {
+			chosenAction = availableActions[0];
+		}
+	}
+
+	var next = chosenAction.applyTo(game.currentState);
+
+	ui.insertAt(chosenAction.movePosition, turn);
+
+	game.advanceTo(next);
+};
+
+function takeABlindMove(turn) {
+    var available = game.currentState.emptyCells();
+    var randomCell = available[Math.floor(Math.random() * available.length)];
+    var action = new AIAction(randomCell);
+
+    var next = action.applyTo(game.currentState);
+
+    ui.insertAt(randomCell, turn);
+
+    game.advanceTo(next);
+}

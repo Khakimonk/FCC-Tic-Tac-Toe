@@ -1,91 +1,83 @@
-body {
-	font-family: 'Harmattan', sans-serif;
-	text-align: center;
+.main-container {
+    height: 100%;
+    width: 900px;
+    margin: 0 auto;
 }
 
-table {
-	margin: 40px auto;
-	border-collapse: collapse;
+.board {
+    height: 420px;
+    width: 420px;
+    margin: 0 auto;
 }
 
-tr {
-	margin: 0px;
-    padding: 0px;
+.cell {
+    width: 140px;
+    height: 140px;
+    border: 2px dashed lightskyblue;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    cursor:pointer;
+    float:left;
+    line-height: 140px;
+    text-align: center;
+    font-family: "Arial Narrow";
+    font-weight: bold;
+    font-size: 70px;
 }
 
-td {
-	background-color: white;
-	margin: 0px;
-    padding: 0px;
-    width: 125px;
-    height: 125px;
-    border: 1px solid black;
+.control {
+    font-family: "Arial Narrow";
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-top:40px;
+}
+
+.level {
+    margin: 0 15px;
+    color: lightskyblue;
     cursor: pointer;
-    font-size: 3em;
 }
 
-.playerAlert {
-	width: 625px;
-	height: 100px;
-	margin: auto;
-	border: 1px solid black;
-	font-weight: bolder;
-	font-size: 3em;
+.not-selected {
+    opacity: 0.5;
 }
 
-.exes {
-	color: blue;
+.not-selected:hover {
+    opacity:1;
 }
 
-.oohs {
-	color: green;
+.start {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: #87CEFA;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50px;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    cursor:pointer;
+    opacity:0.5;
 }
 
-.popContainer {
-  position: fixed;
-  background-color: rgba(1, 1, 1, 0.9);
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  display: none;
+.start:hover {
+    opacity:1;
 }
 
-.content {
-  position: relative;
-  color: rgb(0, 0, 0);
-  padding: 100px 10px 10px 10px;
-  background-color: white;
-  top: 20%;
-  width: 25%;
-  height: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-  -webkit-animation-name: animateappear;
-  -webkit-animation-duration: 0.8s;
-  animation-name: animateappear;
-  animation-duration: 0.8s;
+.ingame {
+    display:none;
+    color:lightskyblue;
 }
 
-@-webkit-keyframes animateappear {
-  0% {
-    bottom: -1500px;
-  }
-  100% {
-    bottom: 0px;
-  }
+.ingame > p {
+    margin:0px;
 }
 
-@keyframes animateappear {
-  0% {
-    bottom: -1500px;
-  }
-  100% {
-    bottom: 0px;
-  }
-}
-
-input {
-	width: 50px;
-	height: 50px;
+.robot {
+    opacity:0.5;
 }

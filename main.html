@@ -1,38 +1,49 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>FCC Tic-Tac-Toe</title>
-	<link href="styling/tictactoe.css" type="text/css" rel="stylesheet">
-	<link href='https://fonts.googleapis.com/css?family=Harmattan' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<div class="popContainer" id="playerSelect">
-	<div class="content">
-		<h2>Player choose: X or O?</h2>
-		<input type="button" value="X" id="exes"/>
-		<input type="button" value="O" id="oohs"/>
-	</div>
-</div>
-	<table>
-    <tr>
-        <td id="c00"></td>
-        <td id="c01"></td>
-        <td id="c02"></td>
-    </tr>
-    <tr>
-        <td id="c10"></td>
-        <td id="c11"></td>
-        <td id="c12"></td>
-    </tr>
-    <tr>
-        <td id="c20"></td>
-        <td id="c21"></td>
-        <td id="c22"></td>
-    </tr>
-</table>
+    <head>
+        <title>Tic-Tac-Toe AI</title>
+        <link rel = 'stylesheet' type = 'text/css' href = 'styling/tictactoe.css'>
+    </head>
 
-	<div id="onScreenMessage" class="playerAlert"></div>
-</body>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="JS/tictactoe.js"></script>
+    <body>
+        <div class = 'main-container'>
+            <div class = 'board'>
+                <!-- data-indx following cell divs represents cell index in 1D array representation -->
+                <div class='cell' data-indx = "0" ></div>
+                <div class='cell' data-indx = "1" ></div>
+                <div class='cell' data-indx = "2" ></div>
+                <div class='cell' data-indx = "3" ></div>
+                <div class='cell' data-indx = "4" ></div>
+                <div class='cell' data-indx = "5" ></div>
+                <div class='cell' data-indx = "6" ></div>
+                <div class='cell' data-indx = "7" ></div>
+                <div class='cell' data-indx = "8" ></div>
+            </div>
+
+            <div class = 'control'>
+                <!-- div.intial displays the starting controls -->
+                <div class = 'intial'>
+                    <div class = 'difficulty'>
+                        <span class = 'level not-selected' id = "blind">Blind</span>
+                        <span class = 'level not-selected' id = "novice">Novice</span>
+                        <span class = 'level not-selected' id = "master">Master!</span>
+                    </div>
+
+                    <div class='start'> Start </div>
+                </div>
+
+                <!-- div.ingame displays in-game messages and controls -->
+                <div class = 'ingame' id="human">It's your turn ...</div>
+                <div class = 'ingame' id="ai">
+                    <p>Wait for it ...</p>
+                </div>
+                <div class = 'ingame' id="won">You won !</div>
+                <div class = 'ingame' id="lost">You lost !</div>
+                <div class = 'ingame' id="draw">It's a Draw</div>
+            </div>
+        </div>
+
+        <script src = "scripts/jquery-1.10.1.min.js"></script>
+        <script src="JS/tictactoe.js"></script>
+    </body>
 </html>
