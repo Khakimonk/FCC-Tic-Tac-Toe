@@ -1,12 +1,19 @@
 var $tdSelect = $('td');
 var $modal = $('#playerSelect');
+var gameBoard = ["E", "E", "E",
+                 "E", "E", "E",
+                 "E", "E", "E"];
 
 var nodeList = document.getElementsByTagName("td");
 
 function displayNode() {
     for(var i = 0; i < nodeList.length; i++) {
         console.log(nodeList[i].innerHTML);
+        if(nodeList[i].innerHTML !== "") {
+            gameBoard[i] = nodeList[i].innerHTML;
+        }
     }
+    console.log(gameBoard);
 }
 
 $(document).ready(function () {
@@ -29,10 +36,11 @@ $tdSelect.click(function() {
     var board = $(this);
     checkBoard(board, playerIcon);
     displayNode();
+    getWinning();
 });
 
 function checkBoard(board, player) {
-    if(board.text() != "") {
+    if(board.text() !== "") {
         console.log("Square already selected");
     } 
     else {
@@ -40,22 +48,28 @@ function checkBoard(board, player) {
     }
 }
 
-function checkWinning(board, player) {
-    for(var i = 0; i < nodeList.length; i++) {
-        if(nodeList[i].innerHTML !== "" && nodeList[i].innerHTML === nodeList[i + 1].innerHTML && nodeList[i + 1].innerHTML === nodeList[i + 2].innerHTML) {
-            return 1;
+//	[0, 1, 2,
+//	 3, 4, 5,
+//	 6, 7, 8]
+function getWinning() {
+    for(var i = 0; i < 9; i+=3) {
+        if(gameBoard[i] !== "E" && gameBoard[i] === gameBoard[i + 1] && gameBoard[i + 1] === gameBoard[i + 2]) {
+            console.log("row check true");
+            return true;
         }
-
-        if(nodeList[i].innerHTML !== "" && nodeList[i].innerHTML === nodeList[i + 3].innerHTML && nodeList[i + 3].innerHTML === nodeList[i + 6].innerHTML) {
-            return 1;
-        }
-
-        for(var j = 4; j < nodeList.length; j + 4) {
-            if(nodeList[i].innerHTML !== "" && nodeList[i].innerHTML === nodeList[j].innerHTML && nodeList[j].innerHTML === nodeList[j + 4].innerHTML) {
-                return 1;
-            }
-        }
-
-
     }
-}
+    for(var i = 0; i < 3; i++) {
+        if(gameBoard[i] !== "E" && gameBoard[i] === gameBoard[i + 3] && gameBoard[i + 3] === gameBoard[i + 6]) {
+            console.log("column check true");
+            return true;
+        }
+    }
+    if(gameBoard[0] !== "E" && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+        console.log("diagonal check true");
+        return true;
+    } 
+    else if(gameBoard[2] !== "E" && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+        console.log("diagonal check true");
+        return true;
+    }
+};
