@@ -1,11 +1,15 @@
 var $tdSelect = $('td');
 var $modal = $('#playerSelect');
-var playerIcon, computerIcon, choice, board;
+var playerIcon, computerIcon, choice, board, gameOver;
 
 
 var gameBoard = document.getElementsByTagName('td');
 
 $(document).ready(function () {
+    newGame();
+});
+
+$("#reset").click(function() {
     newGame();
 });
 
@@ -32,6 +36,11 @@ $tdSelect.click(function() {
 })
 
 function newGame() {
+    if(gameOver == true) {
+        gameOver = false;
+        $("#onScreenMessage").text("");   
+    }
+    
     board = [];
     for(var i = 0; i < gameBoard.length; i++) {
         gameBoard[i].innerHTML = "";
@@ -187,6 +196,7 @@ function checkForWinner(game) {
 }
 
 function GameOver(game) {
+    gameOver = true;
     var alert = $('#onScreenMessage'); 
     if (checkForWinner(game) === 0)
         return false;
